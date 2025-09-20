@@ -5,71 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ployx - Privacy Policy</title>
   <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; overflow-x: hidden; }
+
+    /* Background Gradient Animation */
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: white;
+      background: linear-gradient(270deg, #1a1a1d, #232526, #0f2027);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
-      text-align: center;
+      position: relative;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    /* Floating Particles */
+    .particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: 0;
     }
-    h2 {
-      color: #1f1c2c;
-      margin-top: 20px;
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0,198,255,0.7);
+      box-shadow: 0 0 10px rgba(0,198,255,0.5), 0 0 20px rgba(0,198,255,0.3);
+      animation: float 25s linear infinite;
     }
-    p {
-      margin-bottom: 15px;
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #555;
+
+    /* Main Card */
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
     }
-    a {
-      color: #1f1c2c;
-      text-decoration: underline;
+
+    h1, h2 { font-weight: bold; margin-bottom: 20px; color: #00c6ff; }
+    p, li { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; color: #ddd; }
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    a { color: #00c6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .footer { text-align: center; margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 25px; margin: 20px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      p, li { font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Glowing Particles -->
+  <div class="particles">
+    <div class="particle" style="width:10px; height:10px; left:5%; animation-duration:18s;"></div>
+    <div class="particle" style="width:8px; height:8px; left:20%; animation-duration:22s;"></div>
+    <div class="particle" style="width:12px; height:12px; left:35%; animation-duration:26s;"></div>
+    <div class="particle" style="width:6px; height:6px; left:50%; animation-duration:20s;"></div>
+    <div class="particle" style="width:14px; height:14px; left:65%; animation-duration:28s;"></div>
+    <div class="particle" style="width:9px; height:9px; left:80%; animation-duration:24s;"></div>
+  </div>
+
+  <!-- Main Card -->
+  <div class="container">
     <h1>Privacy Policy</h1>
-  </header>
-  <main>
-    <p>This privacy policy applies to the <strong>Ployx - AI Prompts For Images</strong> app (hereby referred to as "Application") for mobile devices that was created by Ployx (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".</p>
+    <p>This privacy policy applies to the <strong>Ployx - AI Prompts For Images</strong> app ("Application") created by <strong>Ployx</strong> ("Service Provider") as a free service. This service is intended for use "AS IS".</p>
 
     <h2>Information Collection and Use</h2>
-    <p>The Application collects information when you download and use it. This information may include information such as:</p>
+    <p>The Application collects information when you download and use it, which may include:</p>
     <ul>
-      <li>Your device's Internet Protocol address (IP address)</li>
-      <li>The pages of the Application that you visit, the time and date of your visit, the time spent on those pages</li>
-      <li>The time spent on the Application</li>
-      <li>The operating system you use on your mobile device</li>
+      <li>Your device's IP address</li>
+      <li>Pages you visit in the Application, and the time spent</li>
+      <li>The operating system of your device</li>
     </ul>
-    <p>The Application does not gather precise information about the location of your mobile device.</p>
+    <p>The Application does not collect precise location data. For better service, you may provide personally identifiable information including <a href="mailto:ployx.com@ccmail.uk">ployx.com@ccmail.uk</a>. Information is retained and used as described in this policy.</p>
 
-    <h2>Third Party Access</h2>
-    <p>The Service Provider may share your information with third parties in the ways described in this privacy statement. The Application utilizes third-party services with their own Privacy Policies, including:</p>
+    <h2>Third-Party Access</h2>
+    <p>Only aggregated, anonymized data is transmitted to third-party services to improve the Application. The Application uses services such as:</p>
     <ul>
       <li>Google Play Services</li>
       <li>AdMob</li>
@@ -77,27 +114,30 @@
       <li>Unity</li>
       <li>AppLovin</li>
     </ul>
+    <p>Information may also be disclosed when required by law or to protect rights and safety.</p>
 
     <h2>Opt-Out Rights</h2>
-    <p>You can stop all collection of information by uninstalling the Application using your device’s standard uninstall process.</p>
+    <p>You can stop all information collection by uninstalling the Application using your device's standard process.</p>
 
     <h2>Data Retention Policy</h2>
-    <p>The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. To delete User Provided Data, contact <a href="mailto:contact@ployx.com">contact@ployx.com</a>.</p>
+    <p>Data is retained as long as you use the Application. For deletion requests, contact <a href="mailto:ployx.com@ccmail.uk">ployx.com@ccmail.uk</a>.</p>
 
     <h2>Children</h2>
-    <p>The Service Provider does not knowingly collect data from children under 13 years of age. If such data is found, it will be deleted immediately.</p>
+    <p>The Application does not knowingly solicit data from children under 13. If discovered, such data will be deleted immediately.</p>
 
     <h2>Security</h2>
-    <p>The Service Provider provides safeguards to protect the information it processes and maintains.</p>
+    <p>We use physical, electronic, and procedural safeguards to protect your information.</p>
 
     <h2>Changes</h2>
-    <p>This Privacy Policy may be updated from time to time. Please review this page regularly. This policy is effective as of <strong>2025-09-20</strong>.</p>
+    <p>This Privacy Policy may be updated; continued use constitutes acceptance of changes.</p>
 
-    <h2>Contact Us</h2>
-    <p>If you have any questions regarding privacy, please contact: <a href="mailto:contact@ployx.com">contact@ployx.com</a></p>
-  </main>
-  <footer>
-    &copy; 2025 Ployx | <a href="index.html">Back to Home</a>
-  </footer>
+    <h2>Your Consent</h2>
+    <p>By using the Application, you consent to this Privacy Policy as amended.</p>
+
+    <div class="footer">
+      &copy; 2025 Ployx | <a href="index.html">Back to Home</a>
+    </div>
+  </div>
+
 </body>
 </html>
