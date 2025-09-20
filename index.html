@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ployx - Coming Soon</title>
   <style>
+    /* Background Gradient Animation */
     body {
       margin: 0;
       padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(-45deg, #1f1c2c, #928dab, #283c86, #45a247);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
-      color: #fff;
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      text-align: center;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2735);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
       overflow: hidden;
+      color: #fff;
     }
 
     @keyframes gradientBG {
@@ -28,171 +27,183 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Floating Particle Effect */
+    .particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      to { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Center Card */
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      max-width: 480px;
+      width: 90%;
+    }
+
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      z-index: 2;
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      z-index: 2;
+
+    /* Typing Animation */
+    .typing {
+      font-size: 1.1rem;
+      color: #ccc;
+      height: 25px;
+      margin-bottom: 25px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00c6ff;
+      display: inline-block;
+      animation: blink 0.8s infinite;
     }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
     .email-box {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
-      z-index: 2;
+      margin-bottom: 20px;
     }
+
     input[type="email"] {
-      padding: 10px;
+      padding: 12px 15px;
       border: none;
       border-radius: 25px 0 0 25px;
       outline: none;
-      width: 250px;
+      width: 65%;
       font-size: 1rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
     }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
       border-radius: 0 25px 25px 0;
-      background: #ff4b2b;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
       color: #fff;
       font-size: 1rem;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     button:hover {
-      background: #ff416c;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 114, 255, 0.6);
     }
+
     footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.9rem;
-      z-index: 2;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #bbb;
     }
+
     footer a {
-      color: #fff;
+      color: #00c6ff;
+      text-decoration: none;
+    }
+    footer a:hover {
       text-decoration: underline;
-    }
-
-    /* Particle styling */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-      animation: floatUp linear infinite;
-      transition: transform 0.6s ease;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 1;
-      }
-      50% {
-        transform: translateY(50vh) scale(0.8);
-        opacity: 0.7;
-      }
-      to {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Floating particles -->
-  <div class="particles"></div>
 
-  <h1>Ployx</h1>
-  <p>AI Prompts for Images – Coming Soon 🚀</p>
-
-  <div class="email-box">
-    <input type="email" placeholder="Enter your email" />
-    <button id="notifyBtn">Notify Me</button>
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle" style="width:10px; height:10px; left:10%; animation-duration:15s;"></div>
+    <div class="particle" style="width:8px; height:8px; left:25%; animation-duration:18s;"></div>
+    <div class="particle" style="width:12px; height:12px; left:40%; animation-duration:22s;"></div>
+    <div class="particle" style="width:6px; height:6px; left:55%; animation-duration:17s;"></div>
+    <div class="particle" style="width:14px; height:14px; left:70%; animation-duration:25s;"></div>
+    <div class="particle" style="width:9px; height:9px; left:85%; animation-duration:19s;"></div>
   </div>
 
-  <footer>
-    &copy; 2025 Ployx | <a href="privacy.html">Privacy Policy</a>
-  </footer>
+  <!-- Main Card -->
+  <div class="card">
+    <h1>Ployx</h1>
+    <div class="typing" id="typing"></div>
 
+    <div class="email-box">
+      <input type="email" placeholder="Enter your email" />
+      <button>Notify Me</button>
+    </div>
+
+    <footer>
+      &copy; 2025 Ployx | <a href="privacy.html">Privacy Policy</a>
+    </footer>
+  </div>
+
+  <!-- Typing Script -->
   <script>
-    // Create random floating particles
-    const particlesContainer = document.querySelector('.particles');
-    const colors = ["#00f5ff", "#9d4edd", "#39ff14"];
-    let particles = [];
+    const messages = [
+      "AI Prompts for Images",
+      "AI Tools for Creativity",
+      "Boost Your Imagination"
+    ];
+    let messageIndex = 0;
+    let charIndex = 0;
+    const typingElement = document.getElementById("typing");
+    let isDeleting = false;
 
-    for (let i = 0; i < 40; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-
-      const size = Math.random() * 6 + 4;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}vw`;
-      particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-      particlesContainer.appendChild(particle);
-      particles.push(particle);
+    function typeEffect() {
+      const currentMessage = messages[messageIndex];
+      if (!isDeleting) {
+        typingElement.textContent = currentMessage.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentMessage.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1500); // pause before deleting
+          return;
+        }
+      } else {
+        typingElement.textContent = currentMessage.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          messageIndex = (messageIndex + 1) % messages.length;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 60 : 100);
     }
 
-    // Mousemove interactive effect
-    document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      particles.forEach((p, i) => {
-        p.style.transform = `translate(${x * (i % 5)}px, ${y * (i % 5)}px)`;
-      });
-    });
-
-    // Scatter effect on button hover
-    const notifyBtn = document.getElementById("notifyBtn");
-    notifyBtn.addEventListener("mouseenter", () => {
-      particles.forEach((p, i) => {
-        if (i % 4 === 0) {
-          const randomX = (Math.random() - 0.5) * 100;
-          const randomY = (Math.random() - 0.5) * 100;
-          p.style.transform = `translate(${randomX}px, ${randomY}px) scale(1.2)`;
-        }
-      });
-    });
-    notifyBtn.addEventListener("mouseleave", () => {
-      particles.forEach((p) => {
-        p.style.transform = "translate(0,0)";
-      });
-    });
-
-    // Explosion effect on button click
-    notifyBtn.addEventListener("click", () => {
-      particles.forEach((p, i) => {
-        if (i % 3 === 0) {
-          const burstX = (Math.random() - 0.5) * 300;
-          const burstY = (Math.random() - 0.5) * 300;
-          p.style.transform = `translate(${burstX}px, ${burstY}px) scale(1.5)`;
-        }
-      });
-
-      // Reset particles after explosion
-      setTimeout(() => {
-        particles.forEach((p) => {
-          p.style.transform = "translate(0,0)";
-        });
-      }, 800);
-    });
+    typeEffect();
   </script>
 </body>
 </html>
