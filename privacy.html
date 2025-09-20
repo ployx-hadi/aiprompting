@@ -6,14 +6,16 @@
   <title>Ployx - Privacy Policy</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; overflow-x: hidden; }
+    html, body { min-height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; overflow-x: hidden; }
 
     /* Gradient Background */
     body {
       background: linear-gradient(270deg, #1a1a1d, #232526, #0f2027);
       background-size: 600% 600%;
       animation: gradientBG 20s ease infinite;
-      display: flex; justify-content: center; align-items: center; padding: 20px; position: relative;
+      position: relative;
+      padding: 0;
+      overflow-y: auto;
     }
     @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
@@ -22,7 +24,7 @@
     .particle {
       position: absolute; border-radius: 50%; background: rgba(0,198,255,0.7);
       box-shadow: 0 0 20px rgba(0,198,255,0.7), 0 0 40px rgba(0,198,255,0.5);
-      bottom: -50px; animation-name: float; animation-timing-function: linear; animation-iteration-count: infinite;
+      bottom:-50px; animation-name: float; animation-timing-function: linear; animation-iteration-count: infinite;
     }
     @keyframes float {
       0% { transform: translateY(0) scale(0.3); opacity: 0; }
@@ -32,8 +34,13 @@
 
     /* Container Card */
     .container {
-      position: relative; z-index: 2; max-width: 800px; margin: 40px auto; padding: 40px;
-      background: rgba(255,255,255,0.05); border-radius: 20px; box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      position: relative; z-index: 2;
+      max-width: 800px; 
+      margin: 80px auto;  /* add margin at top */
+      padding: 40px 30px;
+      background: rgba(255,255,255,0.05); 
+      border-radius: 20px; 
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
       backdrop-filter: blur(12px);
     }
     h1, h2 { font-weight: bold; margin-bottom: 20px; color: #00c6ff; }
@@ -43,9 +50,8 @@
 
     .footer { text-align: center; margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
 
-    /* Mobile Responsive */
     @media (max-width: 600px) { 
-      .container { padding: 25px; margin: 20px; } 
+      .container { padding: 25px; margin: 50px 20px; } 
       h1 { font-size: 2rem; } 
       h2 { font-size: 1.2rem; } 
       p, li { font-size: 0.95rem; } 
@@ -56,7 +62,6 @@
 
   <!-- Particles -->
   <div class="particles">
-    <!-- Denser particles with different sizes -->
     <div class="particle" style="width:6px;height:6px;left:5%;animation-duration:18s;"></div>
     <div class="particle" style="width:10px;height:10px;left:12%;animation-duration:22s;"></div>
     <div class="particle" style="width:8px;height:8px;left:20%;animation-duration:20s;"></div>
