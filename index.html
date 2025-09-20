@@ -9,7 +9,9 @@
       margin: 0;
       padding: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      background: linear-gradient(-45deg, #1f1c2c, #928dab, #283c86, #45a247);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -17,20 +19,31 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
+      z-index: 2;
     }
     p {
       font-size: 1.2rem;
       margin-bottom: 30px;
+      z-index: 2;
     }
     .email-box {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
+      z-index: 2;
     }
     input[type="email"] {
       padding: 10px;
@@ -57,24 +70,129 @@
       position: absolute;
       bottom: 15px;
       font-size: 0.9rem;
+      z-index: 2;
     }
     footer a {
       color: #fff;
       text-decoration: underline;
     }
+
+    /* Particle styling */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+      animation: floatUp linear infinite;
+      transition: transform 0.6s ease;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) scale(0.8);
+        opacity: 0.7;
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Floating particles -->
+  <div class="particles"></div>
+
   <h1>Ployx</h1>
   <p>AI Prompts for Images – Coming Soon 🚀</p>
 
   <div class="email-box">
     <input type="email" placeholder="Enter your email" />
-    <button>Notify Me</button>
+    <button id="notifyBtn">Notify Me</button>
   </div>
 
   <footer>
     &copy; 2025 Ployx | <a href="privacy.html">Privacy Policy</a>
   </footer>
+
+  <script>
+    // Create random floating particles
+    const particlesContainer = document.querySelector('.particles');
+    const colors = ["#00f5ff", "#9d4edd", "#39ff14"];
+    let particles = [];
+
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      const size = Math.random() * 6 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+      particlesContainer.appendChild(particle);
+      particles.push(particle);
+    }
+
+    // Mousemove interactive effect
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      particles.forEach((p, i) => {
+        p.style.transform = `translate(${x * (i % 5)}px, ${y * (i % 5)}px)`;
+      });
+    });
+
+    // Scatter effect on button hover
+    const notifyBtn = document.getElementById("notifyBtn");
+    notifyBtn.addEventListener("mouseenter", () => {
+      particles.forEach((p, i) => {
+        if (i % 4 === 0) {
+          const randomX = (Math.random() - 0.5) * 100;
+          const randomY = (Math.random() - 0.5) * 100;
+          p.style.transform = `translate(${randomX}px, ${randomY}px) scale(1.2)`;
+        }
+      });
+    });
+    notifyBtn.addEventListener("mouseleave", () => {
+      particles.forEach((p) => {
+        p.style.transform = "translate(0,0)";
+      });
+    });
+
+    // Explosion effect on button click
+    notifyBtn.addEventListener("click", () => {
+      particles.forEach((p, i) => {
+        if (i % 3 === 0) {
+          const burstX = (Math.random() - 0.5) * 300;
+          const burstY = (Math.random() - 0.5) * 300;
+          p.style.transform = `translate(${burstX}px, ${burstY}px) scale(1.5)`;
+        }
+      });
+
+      // Reset particles after explosion
+      setTimeout(() => {
+        particles.forEach((p) => {
+          p.style.transform = "translate(0,0)";
+        });
+      }, 800);
+    });
+  </script>
 </body>
 </html>
