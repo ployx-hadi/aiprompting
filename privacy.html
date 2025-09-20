@@ -5,90 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ployx - Privacy Policy</title>
   <style>
-    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html, body { height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; overflow-x: hidden; }
 
-    /* Background Gradient Animation */
+    /* Gradient Background */
     body {
       background: linear-gradient(270deg, #1a1a1d, #232526, #0f2027);
       background-size: 600% 600%;
       animation: gradientBG 20s ease infinite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      position: relative;
+      display: flex; justify-content: center; align-items: center; padding: 20px; position: relative;
     }
+    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Floating Particles */
-    .particles {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
+    /* Glowing Particles */
+    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
     .particle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(0,198,255,0.7);
-      box-shadow: 0 0 10px rgba(0,198,255,0.5), 0 0 20px rgba(0,198,255,0.3);
-      animation: float 25s linear infinite;
+      position: absolute; border-radius: 50%; background: rgba(0,198,255,0.7);
+      box-shadow: 0 0 20px rgba(0,198,255,0.7), 0 0 40px rgba(0,198,255,0.5);
+      bottom: -50px; animation-name: float; animation-timing-function: linear; animation-iteration-count: infinite;
     }
     @keyframes float {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      0% { transform: translateY(0) scale(0.3); opacity: 0; }
       50% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+      100% { transform: translateY(-110vh) scale(1); opacity: 0; }
     }
 
-    /* Main Card */
+    /* Container Card */
     .container {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 40px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
+      position: relative; z-index: 2; max-width: 800px; margin: 40px auto; padding: 40px;
+      background: rgba(255,255,255,0.05); border-radius: 20px; box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
     }
-
     h1, h2 { font-weight: bold; margin-bottom: 20px; color: #00c6ff; }
     p, li { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; color: #ddd; }
     ul { margin-left: 20px; margin-bottom: 20px; }
-    a { color: #00c6ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: #00c6ff; text-decoration: none; } a:hover { text-decoration: underline; }
 
     .footer { text-align: center; margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
 
     /* Mobile Responsive */
-    @media (max-width: 600px) {
-      .container { padding: 25px; margin: 20px; }
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.2rem; }
-      p, li { font-size: 0.95rem; }
+    @media (max-width: 600px) { 
+      .container { padding: 25px; margin: 20px; } 
+      h1 { font-size: 2rem; } 
+      h2 { font-size: 1.2rem; } 
+      p, li { font-size: 0.95rem; } 
     }
   </style>
 </head>
 <body>
 
-  <!-- Glowing Particles -->
+  <!-- Particles -->
   <div class="particles">
-    <div class="particle" style="width:10px; height:10px; left:5%; animation-duration:18s;"></div>
-    <div class="particle" style="width:8px; height:8px; left:20%; animation-duration:22s;"></div>
-    <div class="particle" style="width:12px; height:12px; left:35%; animation-duration:26s;"></div>
-    <div class="particle" style="width:6px; height:6px; left:50%; animation-duration:20s;"></div>
-    <div class="particle" style="width:14px; height:14px; left:65%; animation-duration:28s;"></div>
-    <div class="particle" style="width:9px; height:9px; left:80%; animation-duration:24s;"></div>
+    <!-- Denser particles with different sizes -->
+    <div class="particle" style="width:6px;height:6px;left:5%;animation-duration:18s;"></div>
+    <div class="particle" style="width:10px;height:10px;left:12%;animation-duration:22s;"></div>
+    <div class="particle" style="width:8px;height:8px;left:20%;animation-duration:20s;"></div>
+    <div class="particle" style="width:14px;height:14px;left:28%;animation-duration:25s;"></div>
+    <div class="particle" style="width:12px;height:12px;left:35%;animation-duration:26s;"></div>
+    <div class="particle" style="width:7px;height:7px;left:42%;animation-duration:19s;"></div>
+    <div class="particle" style="width:16px;height:16px;left:50%;animation-duration:28s;"></div>
+    <div class="particle" style="width:9px;height:9px;left:58%;animation-duration:23s;"></div>
+    <div class="particle" style="width:11px;height:11px;left:65%;animation-duration:27s;"></div>
+    <div class="particle" style="width:13px;height:13px;left:72%;animation-duration:24s;"></div>
+    <div class="particle" style="width:10px;height:10px;left:80%;animation-duration:22s;"></div>
+    <div class="particle" style="width:8px;height:8px;left:88%;animation-duration:21s;"></div>
   </div>
 
   <!-- Main Card -->
@@ -103,7 +83,7 @@
       <li>Pages you visit in the Application, and the time spent</li>
       <li>The operating system of your device</li>
     </ul>
-    <p>The Application does not collect precise location data. For better service, you may provide personally identifiable information including <a href="mailto:ployx.com@ccmail.uk">ployx.com@ccmail.uk</a>. Information is retained and used as described in this policy.</p>
+    <p>The Application does not collect precise location data. For better service, you may provide personally identifiable information including <a href="mailto:contact@ployx.com">contact@ployx.com</a>. Information is retained and used as described in this policy.</p>
 
     <h2>Third-Party Access</h2>
     <p>Only aggregated, anonymized data is transmitted to third-party services to improve the Application. The Application uses services such as:</p>
@@ -120,7 +100,7 @@
     <p>You can stop all information collection by uninstalling the Application using your device's standard process.</p>
 
     <h2>Data Retention Policy</h2>
-    <p>Data is retained as long as you use the Application. For deletion requests, contact <a href="mailto:ployx.com@ccmail.uk">ployx.com@ccmail.uk</a>.</p>
+    <p>Data is retained as long as you use the Application. For deletion requests, contact <a href="mailto:contact@ployx.com">contact@ployx.com</a>.</p>
 
     <h2>Children</h2>
     <p>The Application does not knowingly solicit data from children under 13. If discovered, such data will be deleted immediately.</p>
