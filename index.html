@@ -3,124 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ployx - Coming Soon</title>
+  <title>Ployx - AI Prompts for Images</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; overflow-x: hidden; }
-
-    /* Gradient Background */
     body {
-      background: linear-gradient(270deg, #1a1a1d, #232526, #0f2027);
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
       background-size: 600% 600%;
-      animation: gradientBG 20s ease infinite;
-      display: flex; justify-content: center; align-items: center; padding: 20px; position: relative;
+      animation: gradient 20s ease infinite;
+      overflow-x: hidden;
+      position: relative;
     }
-    @keyframes gradientBG {
+    @keyframes gradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* Glowing Particles */
     .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
     .particle {
       position: absolute; border-radius: 50%; background: rgba(0,198,255,0.7);
-      box-shadow: 0 0 20px rgba(0,198,255,0.7), 0 0 40px rgba(0,198,255,0.5);
-      bottom: -50px; animation-name: float; animation-timing-function: linear; animation-iteration-count: infinite;
+      box-shadow: 0 0 10px rgba(0,198,255,0.5), 0 0 20px rgba(0,198,255,0.3);
+      bottom: -50px; animation: float linear infinite;
     }
     @keyframes float {
-      0% { transform: translateY(0) scale(0.3); opacity: 0; }
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
       50% { opacity: 1; }
       100% { transform: translateY(-110vh) scale(1); opacity: 0; }
     }
-
-    /* Card */
-    .card {
+    .container {
       position: relative; z-index: 2;
-      background: rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 50px 40px;
-      text-align: center; backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      max-width: 480px; width: 90%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 20px;
+      text-align: center;
     }
-
-    h1 {
-      font-size: 2.8rem;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
+    .logo {
+      width: 120px; height: 120px; border-radius: 25%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(0,198,255,0.6);
     }
-
-    .typing { font-size: 1.1rem; color: #ccc; height: 25px; margin-bottom: 25px; border-right: 2px solid #00c6ff; display: inline-block; white-space: nowrap; overflow: hidden; animation: blink 0.8s infinite; }
-    @keyframes blink { 50% { border-color: transparent; } }
-
-    .email-box { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-    input[type="email"] {
-      padding: 12px 15px; border: none; border-radius: 25px 0 0 25px; outline: none; width: 65%; font-size: 1rem; background: rgba(255,255,255,0.15); color: #fff; min-width: 180px;
+    h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    p.tagline { font-size: 1.2rem; margin-bottom: 20px; color: #b3e5fc; }
+    .download-btn img { height: 60px; transition: transform 0.3s ease; }
+    .download-btn img:hover { transform: scale(1.05); }
+    .screenshots {
+      margin-top: 40px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;
     }
-    input::placeholder { color: #ccc; }
-    button {
-      padding: 12px 20px; border: none; border-radius: 0 25px 25px 0;
-      background: linear-gradient(90deg, #00c6ff, #0072ff); color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .screenshots img {
+      width: 180px; border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,198,255,0.4);
+      transition: transform 0.3s ease;
     }
-    button:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,114,255,0.6); }
-
-    footer { margin-top: 15px; font-size: 0.85rem; color: #bbb; }
-    footer a { color: #00c6ff; text-decoration: none; }
+    .screenshots img:hover { transform: scale(1.05); }
+    footer {
+      margin-top: 40px; font-size: 0.9rem; color: #bbb;
+    }
+    footer a { color: #00c6ff; text-decoration: none; margin: 0 10px; }
     footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2.2rem; }
-      .typing { font-size: 1rem; }
-      .card { padding: 35px 25px; }
-      .email-box { flex-direction: column; }
-      input[type="email"] { border-radius: 25px; margin-bottom: 10px; width: 100%; }
-      button { border-radius: 25px; width: 100%; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Particles -->
+  <!-- Animated Background Particles -->
   <div class="particles">
-    <div class="particle" style="width:6px;height:6px;left:5%;animation-duration:18s;"></div>
-    <div class="particle" style="width:10px;height:10px;left:12%;animation-duration:22s;"></div>
-    <div class="particle" style="width:8px;height:8px;left:20%;animation-duration:20s;"></div>
-    <div class="particle" style="width:14px;height:14px;left:28%;animation-duration:25s;"></div>
-    <div class="particle" style="width:12px;height:12px;left:35%;animation-duration:26s;"></div>
-    <div class="particle" style="width:7px;height:7px;left:42%;animation-duration:19s;"></div>
-    <div class="particle" style="width:16px;height:16px;left:50%;animation-duration:28s;"></div>
-    <div class="particle" style="width:9px;height:9px;left:58%;animation-duration:23s;"></div>
-    <div class="particle" style="width:11px;height:11px;left:65%;animation-duration:27s;"></div>
-    <div class="particle" style="width:13px;height:13px;left:72%;animation-duration:24s;"></div>
-    <div class="particle" style="width:10px;height:10px;left:80%;animation-duration:22s;"></div>
-    <div class="particle" style="width:8px;height:8px;left:88%;animation-duration:21s;"></div>
+    <div class="particle" style="width:10px; height:10px; left:5%; animation-duration:18s;"></div>
+    <div class="particle" style="width:8px; height:8px; left:20%; animation-duration:22s;"></div>
+    <div class="particle" style="width:12px; height:12px; left:35%; animation-duration:26s;"></div>
+    <div class="particle" style="width:6px; height:6px; left:50%; animation-duration:20s;"></div>
+    <div class="particle" style="width:14px; height:14px; left:65%; animation-duration:28s;"></div>
+    <div class="particle" style="width:9px; height:9px; left:80%; animation-duration:24s;"></div>
   </div>
 
-  <div class="card">
-    <h1>Ployx</h1>
-    <div class="typing" id="typing"></div>
-    <div class="email-box">
-      <input type="email" placeholder="Enter your email" />
-      <button>Notify Me</button>
+  <!-- Main Content -->
+  <div class="container">
+    <img src="logo.png" alt="Ployx Logo" class="logo"> <!-- replace logo.png with your logo -->
+    <h1>Ployx - AI Prompts for Images</h1>
+    <p class="tagline">Discover creative AI prompts and generate stunning images</p>
+
+    <a class="download-btn" href="https://play.google.com/store/apps/details?id=com.ployx.prompts" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+    </a>
+
+    <!-- Screenshots -->
+    <div class="screenshots">
+      <img src="screenshot1.png" alt="Screenshot 1">
+      <img src="screenshot2.png" alt="Screenshot 2">
+      <img src="screenshot3.png" alt="Screenshot 3">
+      <img src="screenshot4.png" alt="Screenshot 4">
     </div>
-    <footer>&copy; 2025 Ployx | <a href="privacy.html">Privacy Policy</a></footer>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 Ployx | 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="mailto:contact@ployx.com">Contact</a>
+    </footer>
   </div>
 
-  <script>
-    const messages = ["AI Prompts for Images", "AI Tools for Creativity", "Boost Your Imagination"];
-    let messageIndex = 0, charIndex = 0, isDeleting = false;
-    const typingElement = document.getElementById("typing");
-    function typeEffect() {
-      const currentMessage = messages[messageIndex];
-      if (!isDeleting) { typingElement.textContent = currentMessage.substring(0, charIndex + 1); charIndex++;
-        if (charIndex === currentMessage.length) { isDeleting = true; setTimeout(typeEffect, 1500); return; }
-      } else { typingElement.textContent = currentMessage.substring(0, charIndex - 1); charIndex--;
-        if (charIndex === 0) { isDeleting = false; messageIndex = (messageIndex + 1) % messages.length; }
-      }
-      setTimeout(typeEffect, isDeleting ? 60 : 100);
-    }
-    typeEffect();
-  </script>
 </body>
 </html>
